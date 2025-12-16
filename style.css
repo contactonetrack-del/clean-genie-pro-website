@@ -1179,7 +1179,7 @@ footer {
 
 @media (max-width: 768px) {
 
-    /* Navigation - Drawer */
+    /* Navigation - Glassmorphic Drawer */
     .menu-toggle {
         display: flex;
     }
@@ -1189,14 +1189,20 @@ footer {
         right: -100%;
         top: 0;
         height: 100vh;
-        width: 75%;
-        background-color: var(--bg-card);
+        width: 80%;
+        /* Slightly wider for modern feel */
+        background: rgba(15, 17, 26, 0.85);
+        /* Semi-transparent dark */
+        backdrop-filter: blur(20px);
+        /* Glass effect */
+        -webkit-backdrop-filter: blur(20px);
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 2.5rem;
-        transition: right 0.4s ease;
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+        gap: 2rem;
+        transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.6);
         z-index: 1500;
     }
 
@@ -1205,7 +1211,18 @@ footer {
     }
 
     .nav-links a {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        opacity: 0;
+        transform: translateX(20px);
+        transition: all 0.3s ease;
+    }
+
+    .nav-links.active a {
+        opacity: 1;
+        transform: translateX(0);
+        transition-delay: 0.2s;
     }
 
     /* Hero */
@@ -1234,101 +1251,96 @@ footer {
         width: 100%;
     }
 
-    /* Start of Gallery Resets for Mobile */
+    /* Gallery - Mobile 3D Swipe Carousel */
     .isometric-gallery {
-        padding: 4rem 1.5rem;
-        min-height: auto;
+        padding: 4rem 0;
         overflow: hidden;
-    }
-
-    .isometric-gallery h2 {
-        font-size: 2rem;
-        margin-bottom: 2rem;
     }
 
     .iso-container {
         height: auto;
         display: block;
-        padding-top: 0;
-        perspective: none;
+        padding-top: 1rem;
+        perspective: 1000px;
+        /* Restore depth */
+        width: 100%;
+        overflow-x: visible;
+        /* Using ul for scroll */
     }
 
     .isometric-gallery ul {
         width: 100%;
         height: auto;
-        transform-style: flat;
+        display: flex;
+        flex-direction: row;
+        /* Horizontal */
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 20px;
+        padding: 20px 5%;
+        /* Side padding for peek */
+        scroll-behavior: smooth;
+        transform-style: preserve-3d;
+        /* Keep 3D context */
+    }
+
+    /* Hide scrollbar */
+    .isometric-gallery ul::-webkit-scrollbar {
+        display: none;
     }
 
     .isometric-gallery ul li {
+        width: 85vw;
+        /* Card width */
+        min-width: 85vw;
+        flex-shrink: 0;
+        scroll-snap-align: center;
+
         position: relative;
-        display: block;
-        /* Show all items in a stack, or use JS to carousel */
-        margin-bottom: 4rem;
+        display: flex !important;
+        /* Force show all */
+        flex-direction: column;
+        align-items: center;
+
+        margin: 0;
         opacity: 1 !important;
-        /* Force visible */
-        transform: none !important;
-        animation: none !important;
+        transform: rotateY(0deg);
+        /* Reset rotation */
+        transition: transform 0.4s ease;
     }
 
-    .isometric-gallery ul li.active {
-        display: block;
-    }
-
+    /* Premium "Card" Look */
     .isometric-gallery ul li .iso-link {
         width: 100%;
-        /* Fit screen */
         height: auto;
-        aspect-ratio: 16/9;
-        /* Maintain approx ratio */
+        aspect-ratio: 16/10;
         transform: none !important;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        border-radius: 12px;
-        transition: transform 0.2s;
-        margin: 0 auto;
-    }
+        /* Remove extreme skew */
+        border-radius: 20px;
 
-    .isometric-gallery .img-box {
-        border-radius: 12px;
+        /* Subtle 3D Lift */
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
 
     .isometric-gallery ul li .iso-link img {
-        border-radius: 12px;
-        object-fit: contain;
-    }
-
-    /* Interaction on Mobile */
-    .isometric-gallery ul li .iso-link:hover {
-        transform: scale(1.02) !important;
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-        z-index: 1;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px;
     }
 
     .theme-desc {
         margin-top: 1.5rem;
         opacity: 1 !important;
-        animation: none !important;
         transform: none !important;
+        animation: none !important;
         padding: 0 1rem;
+        width: 100%;
     }
 
     .theme-desc h3 {
-        font-size: 1.5rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .theme-desc p {
-        font-size: 1rem;
-    }
-
-    /* Hide non-active items if we stick to the JS rotator, 
-       but for better mobile UX, we might want to just show them all in a stack.
-       The JS handles 'active' class. Let's rely on that for now to keep it simple (carousel style),
-       OR override it to show all. 
-       
-       Decision: Show ALL items in a vertical stack for easy scrolling on mobile.
-    */
-    .isometric-gallery ul li {
-        display: flex !important;
-        /* Override JS 'display: none' */
+        font-size: 1.4rem;
     }
 }
