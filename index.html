@@ -5,6 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clean Genie Pro - Advanced System Optimization</title>
+    <meta name="description"
+        content="Clean Genie Pro is the advanced system optimization tool for Windows 11 & 10. Clean junk, boost RAM, and wipe tracking cookies with one click.">
+    <meta name="keywords"
+        content="PC cleaner, Windows optimizer, speed up laptop, clear cache, delete temp files, windows 11 booster">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cleangeniepro.com/">
+    <meta property="og:title" content="Clean Genie Pro - Make Your PC Feel Brand New">
+    <meta property="og:description"
+        content="The advanced system optimization tool designed for Windows 11 & 10. Maximize performance today.">
+    <meta property="og:image" content="Asset/Application Preview/Application In Ultrazed Dark Theme.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://cleangeniepro.com/">
+    <meta property="twitter:title" content="Clean Genie Pro - Advanced System Optimization">
+    <meta property="twitter:description"
+        content="Boost your PC performance, clean junk files, and protect privacy. Download Version 1.0 today.">
+    <meta property="twitter:image" content="Asset/Application Preview/Application In Ultrazed Dark Theme.png">
+
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <!-- FontAwesome for Icons -->
@@ -17,10 +38,16 @@
         <div class="logo">
             <i class="fa-solid fa-wand-magic-sparkles"></i> Clean Genie Pro
         </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
         <div class="nav-links">
             <a href="#features">Features</a>
-            <a href="#gallery">Preview</a>
-            <a href="#support">Support</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#gallery">Themes</a>
+            <a href="#faq">FAQ</a>
             <a href="CleanGeniePro_Setup.exe" class="btn-download-nav">Download</a>
         </div>
     </nav>
@@ -28,19 +55,26 @@
     <!-- Hero Section -->
     <header class="hero">
         <div class="hero-content">
-            <div class="badge">Version 1.0 Available Now</div>
+            <div class="brand-tag">By One Track</div>
             <h1>Make Your PC Feel <br><span class="gradient-text">Brand New Again</span></h1>
             <p>The advanced system optimization tool designed for Windows 11 & 10. Clean junk, boost performance, and
                 reclaim your privacy with one click.</p>
-            <div class="cta-group">
-                <a href="../CleanGeniePro_Setup.exe" class="btn-primary"><i class="fa-brands fa-windows"></i> Download
+
+            <div class="cta-wrapper">
+                <a href="../CleanGeniePro_Setup.exe" class="btn-primary ripple-effect"><i
+                        class="fa-brands fa-windows"></i> Download
                     for Windows</a>
-                <span class="version-info">v1.0.0 • 64-bit • Windows 10/11</span>
+
+                <div class="version-chips">
+                    <span class="chip">v1.0.0</span>
+                    <span class="chip">64-bit</span>
+                    <span class="chip"><i class="fa-brands fa-microsoft"></i> Windows 10 / 11</span>
+                </div>
             </div>
         </div>
         <div class="hero-visual">
             <div class="glow-effect"></div>
-            <!-- Placeholder for App Screenshot - User can replace this later -->
+            <!-- App Mockup Rotator -->
             <div class="app-mockup">
                 <div class="mockup-body">
                     <div class="header-slider">
@@ -53,50 +87,127 @@
                         <img src="Asset/Application Preview/Application In Light Theme.png" class="header-slide"
                             alt="Light Theme">
                     </div>
-                    <!-- Navigation Dots -->
-                    <div class="slider-dots">
-                        <span class="dot-control active" data-index="0"></span>
-                        <span class="dot-control" data-index="1"></span>
-                        <span class="dot-control" data-index="2"></span>
-                        <span class="dot-control" data-index="3"></span>
-                    </div>
                 </div>
             </div>
         </div>
     </header>
 
     <!-- Features Section -->
-    <section id="features" class="features">
-        <h2>Powerful Features</h2>
-        <p class="subtitle">Everything you need to keep your system running smoothly.</p>
+    <section id="features" class="features section-pad">
+        <div class="section-header">
+            <h2>Why Choose Clean Genie Pro?</h2>
+            <p class="subtitle">Built for speed, safety, and simplicity.</p>
+        </div>
 
         <div class="feature-grid">
-            <div class="feature-card">
+            <div class="feature-card card-surface">
                 <div class="icon-box"><i class="fa-solid fa-trash-can"></i></div>
                 <h3>Smart Cleaning</h3>
-                <p>Intelligently detect and remove junk files, system logs, and temporary caches safely.</p>
+                <p>Safely remove junk files and free up storage space without risking your personal data.</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card card-surface">
                 <div class="icon-box"><i class="fa-solid fa-microchip"></i></div>
                 <h3>RAM Boost</h3>
-                <p>Optimize memory usage instantly to ensure your heavy apps run without stuttering.</p>
+                <p>Instantly optimize memory usage to ensure heavy games and apps run smoother.</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card card-surface">
                 <div class="icon-box"><i class="fa-solid fa-shield-halved"></i></div>
                 <h3>Privacy Shield</h3>
-                <p>Wipe browser history and tracking cookies to keep your online activity private.</p>
+                <p>Wipe browser traces, cookies, and history to keep your online activity private.</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card card-surface">
                 <div class="icon-box"><i class="fa-solid fa-palette"></i></div>
                 <h3>Modern Design</h3>
-                <p>Built with a stunning Windows 11-inspired aesthetic and fluid animations.</p>
+                <p>A stunning, fluid interface designed specifically to match the Windows 11 aesthetic.</p>
             </div>
         </div>
     </section>
 
-    <!-- Screenshot Gallery -->
-    <section id="gallery" class="isometric-gallery">
+    <!-- NEW: How It Works -->
+    <section id="how-it-works" class="how-it-works section-pad">
+        <div class="section-header">
+            <h2>Optimize in 3 Simple Steps</h2>
+            <p class="subtitle">No complex settings. Just pure performance.</p>
+        </div>
+        <div class="steps-container">
+            <div class="step-card">
+                <div class="step-icon"><i class="fa-solid fa-download"></i><span class="step-num">1</span></div>
+                <h3>Install & Launch</h3>
+                <p>Download the lightweight installer and get started in seconds.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-icon"><i class="fa-solid fa-magnifying-glass-chart"></i><span class="step-num">2</span>
+                </div>
+                <h3>One-Click Scan</h3>
+                <p>Detect junk files, memory hogs, and privacy risks instantly.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-icon"><i class="fa-solid fa-rocket"></i><span class="step-num">3</span></div>
+                <h3>Optimize & Enjoy</h3>
+                <p>Apply safe fixes and experience a faster, cleaner PC immediately.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: Why Clean Genie Pro (Differentiation) -->
+    <section class="why-us section-pad">
+        <div class="why-grid">
+            <div class="why-content">
+                <h2>Better Than The Rest</h2>
+                <p>Most cleaners are bloated, aggressive, or outdated. Clean Genie Pro is different.</p>
+                <ul class="benefit-list">
+                    <li><i class="fa-solid fa-check"></i> <strong>No Ads or Bloatware</strong>: Clean experience,
+                        always.</li>
+                    <li><i class="fa-solid fa-check"></i> <strong>Windows-Native Design</strong>: Feels like part of the
+                        OS.</li>
+                    <li><i class="fa-solid fa-check"></i> <strong>Safe-First Approach</strong>: We never touch critical
+                        registry keys blindly.</li>
+                    <li><i class="fa-solid fa-check"></i> <strong>Visual Themes</strong>: Customize the look to fit your
+                        setup.</li>
+                </ul>
+            </div>
+            <div class="why-visual">
+                <!-- Abstract visual representation using fontawesome or CSS shapes -->
+                <div class="comparison-card">
+                    <div class="comp-header">Generic Cleaners</div>
+                    <div class="comp-row"><i class="fa-solid fa-xmark text-red"></i> Clunky UI</div>
+                    <div class="comp-row"><i class="fa-solid fa-xmark text-red"></i> Aggressive Ads</div>
+                </div>
+                <div class="comparison-card active">
+                    <div class="comp-header">Clean Genie Pro</div>
+                    <div class="comp-row"><i class="fa-solid fa-check text-green"></i> Modern UI</div>
+                    <div class="comp-row"><i class="fa-solid fa-check text-green"></i> Ad-Free</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: Performance Metrics Strip -->
+    <div class="metrics-strip">
+        <div class="metric-item">
+            <span class="metric-val">2GB+</span>
+            <span class="metric-label">Junk Removed (Avg)</span>
+        </div>
+        <div class="metric-item">
+            <span class="metric-val">30%</span>
+            <span class="metric-label">Faster Startup</span>
+        </div>
+        <div class="metric-item">
+            <span class="metric-val">5s</span>
+            <span class="metric-label">Quick Scan Time</span>
+        </div>
+    </div>
+
+    <!-- Theme Gallery (Existing + Improved) -->
+    <section id="gallery" class="isometric-gallery section-pad">
         <h2>Experience the Application UI</h2>
+        <div class="theme-chips">
+            <button class="chip-btn active">Ultrazed Dark</button>
+            <button class="chip-btn">Professional Blue</button>
+            <button class="chip-btn">Balanced Dark</button>
+            <button class="chip-btn">Clean Light</button>
+        </div>
+
         <div class="iso-container">
             <ul class="gallery-list">
                 <li class="iso-block active">
@@ -105,11 +216,6 @@
                             <img src="Asset/Application Preview/Application In Ultrazed Dark Theme.png" alt="Ultrazed">
                         </div>
                     </a>
-                    <div class="theme-desc">
-                        <h3>Ultrazed Dark</h3>
-                        <p>Immerse yourself in maximum focus with a high-contrast interface designed for late-night
-                            productivity.</p>
-                    </div>
                 </li>
                 <li class="iso-block">
                     <a href="#" class="iso-link">
@@ -117,10 +223,6 @@
                             <img src="Asset/Application Preview/Application In Dark Blue Theme.png" alt="Dark Blue">
                         </div>
                     </a>
-                    <div class="theme-desc">
-                        <h3>Professional Blue</h3>
-                        <p>A sophisticated, calming deep blue palette that combines elegance with visual clarity.</p>
-                    </div>
                 </li>
                 <li class="iso-block">
                     <a href="#" class="iso-link">
@@ -128,10 +230,6 @@
                             <img src="Asset/Application Preview/Application In Dark Theme.png" alt="Standard Dark">
                         </div>
                     </a>
-                    <div class="theme-desc">
-                        <h3>Balanced Dark</h3>
-                        <p>The classic dark aesthetic, perfectly balanced for comfort and extended usage sessions.</p>
-                    </div>
                 </li>
                 <li class="iso-block">
                     <a href="#" class="iso-link">
@@ -139,36 +237,121 @@
                             <img src="Asset/Application Preview/Application In Light Theme.png" alt="Light">
                         </div>
                     </a>
-                    <div class="theme-desc">
-                        <h3>Clean Light</h3>
-                        <p>Crisp, bright, and energetic. Perfect for high-visibility environments and daytime workflows.
-                        </p>
-                    </div>
                 </li>
             </ul>
         </div>
+        <p class="gallery-note">* Gallery auto-rotates. Hover to pause.</p>
     </section>
 
+    <!-- NEW: Security & Privacy -->
+    <section class="security-section section-pad">
+        <div class="trust-container">
+            <h2>Security & Privacy First</h2>
+            <p>Your data never leaves your device. We respect your privacy.</p>
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <i class="fa-solid fa-user-shield"></i>
+                    <span>No Spyware</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="fa-solid fa-hard-drive"></i>
+                    <span>Local Processing</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="fa-brands fa-windows"></i>
+                    <span>Defender Compatible</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: FAQ Section -->
+    <section id="faq" class="faq-section section-pad">
+        <div class="section-header">
+            <h2>Frequently Asked Questions</h2>
+        </div>
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-question">Is Clean Genie Pro safe to use? <i
+                        class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer">
+                    <p>Absolutely. We prioritize safety over aggression. Our cleaning engine is designed to only target
+                        safe-to-remove temporary files and caches.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Will it affect my games? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer">
+                    <p>It will improve them! By clearing background RAM usage and temporary files, Clean Genie Pro frees
+                        up resources for your games.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Does it run in the background? <i
+                        class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer">
+                    <p>No hidden background processes. The app only runs when you open it, unless you explicitly enable
+                        the scheduled auto-clean feature.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">How do I uninstall? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer">
+                    <p>You can uninstall it easily via Windows Settings > Apps. We don't leave any leftover files.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer id="support">
         <div class="footer-content">
-            <div class="footer-brand">
-                <h3>Clean Genie Pro</h3>
-                <p>Advanced System Optimization Tool</p>
+            <!-- Col 1: Brand & Social -->
+            <div class="footer-col brand-col">
+                <div class="footer-logo">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Clean Genie Pro
+                </div>
+                <p>The #1 Advanced System Optimization utility for Windows 11 & 10. Built for speed, privacy, and
+                    simplicity.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                </div>
             </div>
-            <div class="footer-links">
-                <h4>Legal</h4>
-                <a href="../EULA.txt" target="_blank">EULA</a>
-                <a href="#">Privacy Policy</a>
+
+            <!-- Col 2: Product -->
+            <div class="footer-col">
+                <h4>Product</h4>
+                <a href="#features">Features</a>
+                <a href="#gallery">Themes</a>
+                <a href="#">System Requirements</a>
+                <a href="#">Changelog</a>
+                <a href="CleanGeniePro_Setup.exe">Download v1.0</a>
             </div>
-            <div class="footer-links">
-                <h4>Support</h4>
+
+            <!-- Col 3: Support -->
+            <div class="footer-col">
+                <h4>Support & Legal</h4>
                 <a href="mailto:support@onetrack.com">Contact Support</a>
+                <a href="../EULA.txt" target="_blank">EULA</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="uninstall.html">Uninstall Instructions</a>
+            </div>
+
+            <!-- Col 4: Newsletter -->
+            <div class="footer-col newsletter-col">
+                <h4>Stay Updated</h4>
+                <p>Subscribe for performance tips and update announcements.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault();">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" aria-label="Subscribe"><i class="fa-solid fa-arrow-right"></i></button>
+                </form>
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; 2025 One Track. All rights reserved.</p>
+            <p>&copy; 2025 One Track. All rights reserved. • Made with <i class="fa-solid fa-heart"
+                    style="color: var(--primary);"></i> for Windows.</p>
         </div>
     </footer>
 
@@ -181,6 +364,23 @@
             } else {
                 nav.classList.remove('scrolled');
             }
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('is-active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu/drawer when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('is-active');
+                navLinks.classList.remove('active');
+            });
         });
 
         // Header Auto-Slide Logic
@@ -198,8 +398,10 @@
                 // Enhanced Dust Effect Generator
                 function createDust() {
                     if (!dustContainer) return;
+                    // Reduce dust on mobile for performance
+                    const isMobile = window.innerWidth < 768;
+                    const particleCount = isMobile ? 10 : 40;
 
-                    const particleCount = 40; // Increased count
                     for (let i = 0; i < particleCount; i++) {
                         const particle = document.createElement('div');
                         particle.classList.add('dust-particle');
@@ -290,14 +492,23 @@
                     return;
                 }
 
+                // Initial Responsive Check
+                function checkMobileMode() {
+                    return window.innerWidth < 768;
+                }
+
                 let currentBlockIndex = 0;
                 // Ensure first block is active
                 blocks.forEach(b => b.classList.remove('active'));
                 blocks[0].classList.add('active');
 
                 const ROTATION_INTERVAL = 4000;
+                let galleryTimer;
 
                 function rotateGallery() {
+                    // Pause rotation on mobile to let users scroll manually if they want
+                    if (checkMobileMode()) return;
+
                     console.log("Rotating gallery from index " + currentBlockIndex);
                     // 1. Hide current
                     blocks[currentBlockIndex].classList.remove('active');
@@ -309,25 +520,82 @@
                     blocks[currentBlockIndex].classList.add('active');
                 }
 
-                let galleryTimer = setInterval(rotateGallery, ROTATION_INTERVAL);
+                // Start timer
+                galleryTimer = setInterval(rotateGallery, ROTATION_INTERVAL);
                 console.log("Gallery timer started");
 
                 // Pause on hover
                 const galleryList = document.querySelector('.gallery-list');
                 if (galleryList) {
                     galleryList.addEventListener('mouseenter', () => {
-                        console.log("Gallery paused");
+                        // console.log("Gallery paused");
                         clearInterval(galleryTimer);
                     });
 
                     galleryList.addEventListener('mouseleave', () => {
-                        console.log("Gallery resumed");
+                        // console.log("Gallery resumed");
                         clearInterval(galleryTimer);
                         galleryTimer = setInterval(rotateGallery, ROTATION_INTERVAL);
                     });
                 }
+
+                // Theme Chip Logic - FAST SWITCHING
+                const chips = document.querySelectorAll('.chip-btn');
+                chips.forEach((btn, index) => {
+                    btn.addEventListener('click', () => {
+                        // 1. Visual Update for Buttons
+                        chips.forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+
+                        // 2. Switch Gallery Image Immediately
+                        blocks.forEach(b => b.classList.remove('active'));
+                        if (blocks[index]) {
+                            blocks[index].classList.add('active');
+                            currentBlockIndex = index; // Update internal index
+                        }
+
+                        // 3. Reset Timer (give user time to look)
+                        clearInterval(galleryTimer);
+                        galleryTimer = setInterval(rotateGallery, ROTATION_INTERVAL);
+                    });
+                });
             });
         })();
+
+        // FAQ Accordion Logic
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                const isActive = item.classList.contains('active');
+
+                // Close all others
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+
+                // Toggle current
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+
+
+        // Add Ripple Effect to Buttons
+        document.querySelectorAll('.ripple-effect').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                let x = e.clientX - e.target.offsetLeft;
+                let y = e.clientY - e.target.offsetTop;
+
+                let ripples = document.createElement('span');
+                ripples.style.left = x + 'px';
+                ripples.style.top = y + 'px';
+                this.appendChild(ripples);
+
+                setTimeout(() => {
+                    ripples.remove()
+                }, 1000);
+            })
+        });
     </script>
 </body>
 
