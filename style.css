@@ -1672,12 +1672,22 @@ footer {
 
 .social-links a {
     color: var(--text-muted);
-    font-size: 1.2rem;
-    transition: all 0.2s;
+    font-size: 1.1rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    transition: all 0.3s ease;
 }
 
 [data-theme="light"] .social-links a {
-    color: #6B7280;
+    color: #4B5563;
+    background: #F3F4F6;
+    border: 1px solid #E5E7EB;
 }
 
 [data-theme="light"] .social-links a:hover {
@@ -1685,8 +1695,17 @@ footer {
 }
 
 .social-links a:hover {
+    color: var(--text-main);
+    background: var(--primary-dim);
+    border-color: var(--primary);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 242, 254, 0.2);
+}
+
+[data-theme="light"] .social-links a:hover {
     color: var(--primary);
-    transform: translateY(-2px);
+    background: #FFFFFF;
+    box-shadow: 0 5px 15px rgba(0, 120, 212, 0.1);
 }
 
 /* Link Columns */
@@ -2311,6 +2330,65 @@ footer {
     .metric-item {
         flex: 1;
         min-width: 0;
+    }
+
+    /* Footer Mobile Enhancement */
+    .footer-content {
+        grid-template-columns: 1fr;
+        /* Stack main blocks */
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .brand-col {
+        order: -1;
+        /* Keep branding at top */
+    }
+
+    .footer-logo {
+        justify-content: center;
+    }
+
+    .social-links {
+        justify-content: center;
+        margin-top: 1rem;
+    }
+
+    /* Side-by-side Nav Links */
+    .footer-content>.footer-col:nth-child(2),
+    .footer-content>.footer-col:nth-child(3) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        /* Side by side */
+        text-align: left;
+        gap: 1rem;
+        padding: 0 5%;
+    }
+
+    .footer-content>.footer-col:nth-child(2) h4,
+    .footer-content>.footer-col:nth-child(3) h4 {
+        grid-column: span 2;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .footer-content>.footer-col:nth-child(2) a,
+    .footer-content>.footer-col:nth-child(3) a {
+        margin-bottom: 0.5rem;
+    }
+
+    .newsletter-col {
+        padding: 0 5%;
+    }
+
+    .newsletter-form {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .copyright {
+        padding: 2rem 5%;
+        font-size: 0.8rem;
     }
 }
 
