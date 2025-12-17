@@ -1808,9 +1808,14 @@ footer {
 
     .hero-visual {
         width: 100%;
+        min-width: 0;
+        /* Clear desktop min-width */
+        max-width: 100%;
         height: auto;
-        aspect-ratio: 4/3;
-        margin-top: 1rem;
+        aspect-ratio: 16 / 10;
+        margin-top: 2rem;
+        transform: translateX(0);
+        /* Clear desktop shift */
     }
 }
 
@@ -2192,7 +2197,8 @@ footer {
         display: flex;
         flex-direction: column;
         align-items: center;
-        /* Flex center for direct children */
+        width: 100%;
+        /* Ensure full width on mobile */
     }
 
     .hero h1 {
