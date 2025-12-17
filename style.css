@@ -1,6 +1,12 @@
 :root {
     --bg-dark: #0f111a;
     --bg-card: #1a1d2d;
+    --bg-glass: rgba(15, 17, 26, 0.8);
+    --bg-mobile-nav: rgba(15, 17, 26, 0.95);
+    --bg-section-alt: #0b0d14;
+    --bg-gradient-metrics: linear-gradient(90deg, #0b0d14, #1a1d2d);
+    --bg-icon-gradient: linear-gradient(135deg, var(--bg-card), #2d3748);
+    --border-icon: var(--border);
     --primary: #00f2fe;
     --primary-dim: rgba(0, 242, 254, 0.1);
     --secondary: #4facfe;
@@ -8,6 +14,76 @@
     --text-muted: #a0aec0;
     --border: rgba(255, 255, 255, 0.1);
     --font-main: 'Outfit', sans-serif;
+    --shadow-card: none;
+}
+
+[data-theme="light"] {
+    /* 🪟 Windows 11 Pro – Light Theme Variables */
+
+    /* Core Backgrounds */
+    --bg-dark: #FFFFFF;
+    /* Main background (--bg-main) */
+    --bg-card: #FFFFFF;
+    --bg-surface: #F3F3F3;
+    /* New variable for sections */
+    --bg-section-alt: #F3F3F3;
+
+    /* Brand & Accent */
+    --primary: #0078D4;
+    /* Windows Blue */
+    --primary-dark: #005A9E;
+    --primary-light: #E7F0F8;
+    --primary-dim: rgba(0, 120, 212, 0.1);
+    --secondary: #0078D4;
+    /* Mapping to primary for consistency in gradients unless distinct */
+
+    /* Text */
+    --text-main: #262626;
+    /* --text-primary */
+    --text-muted: #616161;
+    /* --text-secondary */
+    --text-light: #8A8A8A;
+    /* --text-muted */
+
+    /* Borders & Dividers */
+    --border: #E1E1E1;
+    /* --border-light */
+    --border-icon: transparent;
+
+    /* Effects */
+    --bg-glass: rgba(255, 255, 255, 0.85);
+    --bg-mobile-nav: rgba(255, 255, 255, 0.95);
+    --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.04);
+
+    /* Gradient mappings for existing components */
+    --bg-gradient-metrics: linear-gradient(135deg, #FFFFFF, #F3F3F3);
+    --bg-icon-gradient: linear-gradient(135deg, var(--primary-light), #D0E3F7);
+}
+
+/* Typography Update */
+body {
+    font-family: 'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle:hover {
+    color: var(--primary);
+    background: var(--primary-dim);
+    transform: rotate(15deg);
 }
 
 * {
@@ -38,10 +114,45 @@ body {
     backdrop-filter: blur(10px);
 }
 
+footer {
+    background: #0F111A;
+    /* Force Dark in Light Mode */
+    border-top: 1px solid var(--border);
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+    margin-top: auto;
+}
+
+[data-theme="light"] footer {
+    background: #1F1F1F;
+    /* Windows Trust Zone - Dark */
+    color: #E5E5E5;
+    border-top: none;
+}
+
+[data-theme="light"] .footer-col h4 {
+    color: #FFFFFF;
+}
+
+[data-theme="light"] .footer-col a {
+    color: #9AD1FF;
+    /* Windows Link Blue */
+}
+
+[data-theme="light"] .footer-col a:hover {
+    color: #FFFFFF;
+}
+
 .navbar.scrolled {
-    background: rgba(15, 17, 26, 0.8);
+    background: var(--bg-glass);
     border-bottom: 1px solid var(--border);
     padding: 1rem 5%;
+}
+
+[data-theme="light"] .navbar.scrolled {
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.85);
+    border-bottom: 1px solid var(--border);
 }
 
 .logo {
@@ -56,7 +167,10 @@ body {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
+    /* Reduced gap slightly to prevent wrap */
+    flex-wrap: nowrap;
+    /* Prevent wrapping */
 }
 
 .nav-links a {
@@ -64,6 +178,10 @@ body {
     color: var(--text-muted);
     font-weight: 500;
     transition: color 0.3s;
+    white-space: nowrap;
+    /* Prevent line break */
+    font-size: 0.95rem;
+    /* Slightly smaller to fit */
 }
 
 .nav-links a:hover {
@@ -108,6 +226,17 @@ body {
     font-weight: 600 !important;
 }
 
+[data-theme="light"] .btn-download-nav {
+    background: var(--primary);
+    color: #FFFFFF !important;
+}
+
+/* Disable animation for header button */
+.btn-download-nav .points_wrapper {
+    display: none;
+}
+
+
 /* Hero Section */
 .hero {
     min-height: 100vh;
@@ -121,6 +250,10 @@ body {
 
 .hero-content {
     max-width: 600px;
+    flex: 0 0 auto;
+    /* Don't shrink, stick to width natural or max-width */
+    width: 45%;
+    /* occupy ~45% of width on large screens */
     z-index: 2;
 }
 
@@ -150,6 +283,39 @@ h1 {
     -webkit-text-fill-color: transparent;
 }
 
+[data-theme="light"] .hero {
+    background: linear-gradient(135deg, #FFFFFF 0%, #F3F3F3 50%, #E7F0F8 100%);
+    position: relative;
+    border-bottom: 1px solid var(--border);
+}
+
+[data-theme="light"] .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 50%, rgba(0, 120, 212, 0.03), transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(0, 120, 212, 0.02), transparent 50%);
+    pointer-events: none;
+}
+
+[data-theme="light"] .hero h1 {
+    color: var(--text-main);
+    background: none;
+    -webkit-text-fill-color: var(--text-main);
+}
+
+[data-theme="light"] .hero h1 span.gradient-text {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+[data-theme="light"] .hero p {
+    color: var(--text-muted);
+}
+
 .hero p {
     color: var(--text-muted);
     font-size: 1.2rem;
@@ -162,6 +328,61 @@ h1 {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: #000;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+[data-theme="light"] .btn-primary {
+    background: var(--primary);
+    color: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(0, 120, 212, 0.2);
+    border: none;
+    border-radius: 50px;
+    /* Rounded corners as requested */
+}
+
+[data-theme="light"] .btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 120, 212, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+[data-theme="light"] .btn-secondary {
+    border: 1.5px solid var(--primary);
+    color: var(--primary);
+}
+
+[data-theme="light"] .btn-secondary:hover {
+    background: #E8F0FF;
+    border-color: var(--primary);
+    transform: translateY(-2px);
 }
 
 .btn-primary {
@@ -192,13 +413,23 @@ h1 {
 
 .hero-visual {
     position: relative;
-    width: 550px;
-    height: 440px;
+    flex: 1;
+    /* Grow to take ALL remaining space */
+    width: auto;
+    min-width: 600px;
+    /* Ensure it stays large */
+    max-width: 1200px;
+    /* Cap on ultrawide */
+    height: auto;
+    aspect-ratio: 16/10;
+    /* Enforce shape so it has height */
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: visible;
-    /* Allow dust to escape */
+    z-index: 10;
+    /* Shift layout slightly left to use gap */
+    transform: translateX(20px);
 }
 
 .glow-effect {
@@ -399,11 +630,24 @@ h1 {
 .isometric-gallery h2 {
     margin-bottom: 3rem;
     font-size: 3rem;
-    background: linear-gradient(135deg, #fff, #a0aec0);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--primary);
     font-weight: 700;
+}
+
+[data-theme="light"] .isometric-gallery h2 {
+    color: var(--primary);
+}
+
+[data-theme="light"] .isometric-gallery {
+    background-color: var(--bg-main);
+    background-image:
+        radial-gradient(circle at 50% 40%, rgba(0, 120, 212, 0.02) 0%, transparent 60%),
+        /* Blue glow (centered) */
+        linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+        /* Dark lines */
+        linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+    /* Dark lines */
+    background-size: 100% 100%, 60px 60px, 60px 60px;
 }
 
 .iso-container {
@@ -417,6 +661,27 @@ h1 {
     padding-top: 50px;
     overflow: visible;
     perspective: 2000px;
+}
+
+.theme-description {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-top: -100px;
+    /* Pull up into the container slightly */
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 1.5em;
+    transition: opacity 0.3s ease;
+    position: relative;
+    z-index: 10;
+}
+
+[data-theme="light"] .theme-description {
+    color: var(--text-main);
+    font-weight: 500;
 }
 
 .isometric-gallery ul {
@@ -466,8 +731,8 @@ h1 {
     display: block;
     width: 688px;
     height: 710px;
-    background: transparent;
-    /* Box style removed */
+    background: #0f172a;
+    /* Dark base behind image */
     padding: 0;
 
     /* Sleek Floating Transform */
@@ -475,25 +740,118 @@ h1 {
     transform-style: preserve-3d;
     transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 
-    /* Ensure border radius doesn't clip badly */
+    /* Real 3D Bezel & Border */
     border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    /* Subtle edge light */
 
-    /* Shadow remains on the Image Shape context */
+    /* Realistic Depth Shadow (Base) */
     box-shadow:
-        -2px 2px 0px #3e4c5e,
-        -4px 4px 0px #3e4c5e,
-        -6px 6px 0px #3e4c5e,
-        -8px 8px 0px #2d3748,
-        30px 40px 80px rgba(0, 0, 0, 0.6);
+        -1px 1px 0px rgba(255, 255, 255, 0.1),
+        -2px 2px 0px #1e293b,
+        -4px 4px 0px #1e293b,
+        -6px 6px 0px #1e293b,
+        -8px 8px 0px #1e293b,
+        -10px 10px 0px #0f172a,
+        20px 30px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* =========================================
+   PER-THEME 3D COLOR MATCHING
+   ========================================= */
+
+/* 1. Ultrazed Dark (Deep Navy/Black) */
+.isometric-gallery ul li:nth-child(1) .iso-link {
+    background: #0B0E14;
+    border-color: rgba(60, 255, 200, 0.1);
+    /* Subtle Green hint */
+    box-shadow:
+        -1px 1px 0px rgba(255, 255, 255, 0.1),
+        -2px 2px 0px #0B0E14,
+        -4px 4px 0px #0B0E14,
+        -6px 6px 0px #05070a,
+        -8px 8px 0px #05070a,
+        -10px 10px 0px #000000,
+        20px 30px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* 2. Professional Blue (Primary Blue) */
+.isometric-gallery ul li:nth-child(2) .iso-link {
+    background: #004e92;
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow:
+        -1px 1px 0px rgba(255, 255, 255, 0.15),
+        -2px 2px 0px #003366,
+        -4px 4px 0px #003366,
+        -6px 6px 0px #002244,
+        -8px 8px 0px #002244,
+        -10px 10px 0px #001122,
+        20px 30px 60px rgba(0, 40, 80, 0.5);
+}
+
+/* 3. Balanced Dark (Standard Gray/Dark) */
+.isometric-gallery ul li:nth-child(3) .iso-link {
+    background: #1f1f1f;
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow:
+        -1px 1px 0px rgba(255, 255, 255, 0.1),
+        -2px 2px 0px #1a1a1a,
+        -4px 4px 0px #1a1a1a,
+        -6px 6px 0px #111111,
+        -8px 8px 0px #111111,
+        -10px 10px 0px #000000,
+        20px 30px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* 4. Clean Light (White) */
+.isometric-gallery ul li:nth-child(4) .iso-link {
+    background: #ffffff;
+    border-color: rgba(0, 0, 0, 0.05);
+    box-shadow:
+        -1px 1px 0px rgba(255, 255, 255, 1),
+        -2px 2px 0px #e2e8f0,
+        -4px 4px 0px #e2e8f0,
+        -6px 6px 0px #cbd5e1,
+        -8px 8px 0px #cbd5e1,
+        -10px 10px 0px #94a3b8,
+        20px 30px 60px rgba(0, 0, 0, 0.15);
+    /* Softer shadow for light mode */
+}
+
+/* Glass Sheen / Reflection Overlay */
+.isometric-gallery ul li .iso-link::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
+    /* Subtle diagonal glare */
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.2) 0%,
+            rgba(255, 255, 255, 0.05) 15%,
+            transparent 40%,
+            transparent 100%);
+    pointer-events: none;
+    z-index: 10;
+    mix-blend-mode: overlay;
+    /* Blends nicely with dark/light images */
+}
+
+/* Hover Lift Effect */
+.isometric-gallery ul li:hover .iso-link {
+    transform: rotateX(40deg) rotateZ(-25deg) rotateY(0deg) translateZ(20px) translateY(-20px);
+    /* Shadow transition handled by transition property, color inherits */
 }
 
 .isometric-gallery .img-box {
     width: 100%;
     height: 100%;
-    overflow: visible;
+    overflow: hidden;
+    /* Clip image to border radius */
     position: relative;
     border-radius: 40px;
-    /* REMOVED ALL BORDERS AND BACKGROUNDS */
     border: none;
     background: transparent;
 }
@@ -509,7 +867,6 @@ h1 {
     object-fit: fill;
     display: block;
     border-radius: 40px;
-    /* Ensure image itself is rounded */
 }
 
 /* Hover Effect */
@@ -643,10 +1000,33 @@ h1 {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 16px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 2rem;
     position: relative;
     overflow: hidden;
-    /* For ripple */
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-card);
+}
+
+[data-theme="light"] .card-surface:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.12);
+}
+
+.feature-card {
+    text-align: center;
+    z-index: 1;
+}
+
+[data-theme="light"] .feature-card {
+    background: linear-gradient(135deg, #FFFFFF, #F3F3F3);
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+[data-theme="light"] .feature-card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 8px 24px rgba(0, 120, 212, 0.15);
+    transform: translateY(-4px);
 }
 
 .card-surface:hover {
@@ -672,9 +1052,15 @@ h1 {
     font-weight: 700;
 }
 
+/* Light Theme Section Banding */
+[data-theme="light"] #how-it-works,
+[data-theme="light"] #faq {
+    background: var(--bg-section-alt);
+}
+
 /* How It Works Section */
 .how-it-works {
-    background: #0b0d14;
+    background: var(--bg-section-alt);
     /* Slightly darker */
 }
 
@@ -693,7 +1079,7 @@ h1 {
 .step-icon {
     width: 80px;
     height: 80px;
-    background: linear-gradient(135deg, var(--bg-card), #2d3748);
+    background: var(--bg-icon-gradient);
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -702,8 +1088,39 @@ h1 {
     color: var(--primary);
     margin: 0 auto 1.5rem;
     position: relative;
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-icon);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="light"] .step-card {
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: none;
+    transition: all 0.3s ease;
+}
+
+[data-theme="light"] .step-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transform: translateY(-4px);
+}
+
+[data-theme="light"] .step-icon {
+    box-shadow: none;
+    background: var(--primary);
+    color: #FFFFFF;
+    border: none;
+}
+
+[data-theme="light"] .step-num {
+    background: #FFFFFF;
+    color: var(--primary);
+    border: 1px solid var(--border);
+    top: 5px;
+    right: 5px;
+    /* Inset slightly */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .step-num {
@@ -722,6 +1139,14 @@ h1 {
     align-items: center;
 }
 
+[data-theme="light"] .step-num {
+    background: #FFFFFF;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    line-height: 21px;
+    /* Center text vertically with border */
+}
+
 .step-card h3 {
     margin-bottom: 0.8rem;
     font-size: 1.25rem;
@@ -734,7 +1159,7 @@ h1 {
 
 /* Metrics Strip */
 .metrics-strip {
-    background: linear-gradient(90deg, #0b0d14, #1a1d2d);
+    background: var(--bg-gradient-metrics);
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
     padding: 3rem 10%;
@@ -752,13 +1177,25 @@ h1 {
     display: block;
     font-size: 2.5rem;
     font-weight: 700;
-    color: #fff;
+    color: var(--text-main);
     /* High contrast */
     margin-bottom: 0.5rem;
     background: linear-gradient(135deg, #fff, var(--secondary));
     -webkit-background-clip: text;
     background-clip: text;
+    -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+[data-theme="light"] .metrics-strip {
+    background: var(--bg-gradient-metrics);
+}
+
+[data-theme="light"] .metric-val {
+    background: none;
+    -webkit-text-fill-color: var(--primary);
+    color: var(--primary);
 }
 
 .metric-label {
@@ -813,6 +1250,25 @@ h1 {
     background: radial-gradient(circle at center, rgba(0, 242, 254, 0.05), transparent 70%);
 }
 
+.faq-item.active {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+}
+
+[data-theme="light"] .faq-item.active {
+    background: #F8FCFF;
+    border-color: var(--primary);
+    box-shadow: 0 4px 12px rgba(0, 120, 212, 0.08);
+    /* Windows Blue shadow */
+}
+
+[data-theme="light"] .faq-answer {
+    background: #F8FCFF;
+    /* Match active item background */
+    color: var(--text-muted);
+    border-top: 1px solid rgba(0, 120, 212, 0.1);
+}
+
 .comparison-card {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--border);
@@ -848,7 +1304,7 @@ h1 {
 }
 
 .text-green {
-    color: #00f2fe;
+    color: #10b981;
 }
 
 
@@ -882,30 +1338,90 @@ h1 {
 
 /* Security Trust Badges */
 .security-section {
-    background: #0f111a;
+    background: var(--bg-dark);
     border-top: 1px solid var(--border);
     text-align: center;
+    overflow: hidden;
+    /* For any glow effects */
 }
 
-.trust-badges {
-    display: flex;
-    justify-content: center;
-    gap: 3rem;
-    margin-top: 2rem;
-    flex-wrap: wrap;
+/* New Grid Layout */
+.security-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.trust-badge {
+/* Detailed Security Card */
+.security-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    color: var(--text-muted);
+    transition: all 0.3s ease;
+    position: relative;
+    /* Glassmorphism hint */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-.trust-badge i {
-    font-size: 2rem;
-    color: var(--secondary);
+.security-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+    box-shadow: 0 10px 30px rgba(0, 242, 254, 0.15);
+    /* Primary glow */
+}
+
+[data-theme="light"] .security-card:hover {
+    box-shadow: 0 10px 30px rgba(0, 120, 212, 0.15);
+}
+
+/* Icon Box inside Card */
+.sec-icon-box {
+    width: 64px;
+    height: 64px;
+    background: var(--bg-icon-gradient);
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-icon);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] .sec-icon-box {
+    background: rgba(0, 120, 212, 0.1);
+    color: var(--primary);
+    border-color: rgba(0, 120, 212, 0.2);
+    box-shadow: none;
+}
+
+.security-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+}
+
+.security-card p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 90%;
+}
+
+.security-card span {
+    display: none;
+    /* Hide old spans if any linger */
 }
 
 /* FAQ Accordion */
@@ -928,7 +1444,7 @@ h1 {
     text-align: left;
     background: transparent;
     border: none;
-    color: #fff;
+    color: var(--text-main);
     font-size: 1.1rem;
     font-weight: 600;
     display: flex;
@@ -1001,6 +1517,56 @@ h1 {
     border-color: var(--primary);
 }
 
+.hero-visual {
+    position: relative;
+    width: 700px;
+    /* Increased to 700px - Balanced size */
+    height: 520px;
+    /* Proportional increase */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+    z-index: 10;
+}
+
+.glow-effect {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(79, 172, 254, 0.2) 0%, transparent 70%);
+    filter: blur(40px);
+}
+
+.app-mockup {
+    background: transparent;
+    border: none;
+    backdrop-filter: none;
+    border-radius: 12px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+    box-shadow: none;
+    overflow: visible;
+}
+
+.mockup-body {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Header Slider - Auto Switching */
+.header-slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* Ensure styles match parent */
+}
+
 .icon-box {
     background: var(--primary-dim);
     width: 60px;
@@ -1012,6 +1578,12 @@ h1 {
     font-size: 1.5rem;
     color: var(--primary);
     margin-bottom: 1.5rem;
+}
+
+[data-theme="light"] .icon-box {
+    background: linear-gradient(135deg, var(--primary-light), #D0E3F7);
+    color: var(--primary);
+    border-radius: 12px;
 }
 
 .feature-card h3 {
@@ -1026,22 +1598,48 @@ h1 {
 
 
 
-/* Footer */
+/* =========================================
+   Footer Enhancements (Theme & Responsive)
+   ========================================= */
 footer {
     padding: 5rem 5% 2rem;
-    background: #0b0d14;
+    background: var(--bg-section-alt);
+    /* Default Dark */
     border-top: 1px solid var(--border);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+[data-theme="light"] footer {
+    background: #F9FAFB;
+    /* Soft Gray for Light Mode */
+    border-top: 1px solid #E5E7EB;
 }
 
 .footer-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    /* Improved Grid: Stacks better on tablet/mobile */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 3rem;
     margin-bottom: 4rem;
 }
 
+/* Light Theme Text Overrides */
+[data-theme="light"] .footer-col h4 {
+    color: #111827;
+}
+
+[data-theme="light"] .footer-col p,
+[data-theme="light"] .footer-col a {
+    color: #4B5563;
+    /* Dark Gray text */
+}
+
+[data-theme="light"] .footer-col a:hover {
+    color: var(--primary);
+}
+
 .footer-col h4 {
-    color: #fff;
+    color: var(--text-main);
     margin-bottom: 1.5rem;
     font-size: 1.1rem;
     font-weight: 600;
@@ -1078,6 +1676,14 @@ footer {
     transition: all 0.2s;
 }
 
+[data-theme="light"] .social-links a {
+    color: #6B7280;
+}
+
+[data-theme="light"] .social-links a:hover {
+    color: var(--primary);
+}
+
 .social-links a:hover {
     color: var(--primary);
     transform: translateY(-2px);
@@ -1089,14 +1695,15 @@ footer {
     color: var(--text-muted);
     text-decoration: none;
     margin-bottom: 0.8rem;
-    transition: color 0.2s;
+    transition: all 0.2s;
+    /* Smooth transition */
     font-size: 0.95rem;
 }
 
 .footer-col a:hover {
     color: var(--primary);
-    padding-left: 5px;
-    /* Subtle movement */
+    transform: translateX(5px);
+    /* Slide effect */
 }
 
 /* Newsletter styles */
@@ -1110,10 +1717,16 @@ footer {
     border: 1px solid var(--border);
     padding: 0.8rem 1rem;
     border-radius: 8px;
-    color: #fff;
+    color: var(--text-main);
     width: 100%;
     outline: none;
     transition: border-color 0.3s;
+}
+
+[data-theme="light"] .newsletter-form input {
+    background: #FFFFFF;
+    border: 1px solid #D1D5DB;
+    color: #1F2937;
 }
 
 .newsletter-form input:focus {
@@ -1128,6 +1741,11 @@ footer {
     border-radius: 8px;
     cursor: pointer;
     transition: opacity 0.2s;
+}
+
+[data-theme="light"] .newsletter-form button {
+    color: white;
+    /* White text on primary btn in light mode */
 }
 
 .newsletter-form button:hover {
@@ -1177,7 +1795,7 @@ footer {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
 
     /* Navigation - Glassmorphic Drawer */
     .menu-toggle {
@@ -1190,7 +1808,7 @@ footer {
         top: 0;
         height: 100vh;
         width: 80%;
-        background: rgba(15, 17, 26, 0.95);
+        background: var(--bg-mobile-nav);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         border-left: 1px solid rgba(255, 255, 255, 0.1);
@@ -1258,7 +1876,7 @@ footer {
         flex-direction: column;
         text-align: center;
         gap: 2rem;
-         grid-template-columns: 1fr;
+        grid-template-columns: 1fr;
     }
 
     .footer-brand,
@@ -1270,7 +1888,9 @@ footer {
     .isometric-gallery {
         padding: 2rem 0;
         overflow: hidden;
-        min-height: 550px;
+        min-height: auto;
+        /* Remove fixed min-height to allow collapsing */
+        padding-bottom: 2rem;
     }
 
     .iso-container {
@@ -1280,13 +1900,16 @@ footer {
         perspective: 2000px;
         padding-top: 0;
         overflow: visible;
+        height: 340px;
+        /* Force height to match scaled visual height (710 * 0.45 = ~320 + buffer) */
+        align-items: flex-start;
     }
 
     .isometric-gallery ul {
         width: 688px;
         height: 710px;
         /* SCALING FIX: 0.45 ensures it fits within ~320px width (688 * 0.45 = 309.6px) */
-        transform: scale(0.45, 0.45); 
+        transform: scale(0.45, 0.45);
         transform-origin: top center;
 
         display: block;
@@ -1333,13 +1956,397 @@ footer {
     }
 
     .theme-desc {
-        width: 100%; /* Changed from fixed pixel width */
+        width: 100%;
+        /* Changed from fixed pixel width */
         max-width: 500px;
         padding: 0 1rem;
-        margin-top: -100px; /* Pull up closer to the scaled image */
+        margin-top: 1rem;
+    }
+}
+
+/* =========================================
+   Floating Points Button Animation (Clean Integration)
+   ========================================= */
+
+/* Button Base Adjustments for Animation Layering */
+.btn-primary,
+.btn-download-nav {
+    position: relative;
+    overflow: hidden;
+    /* Contain the rising dots */
+    z-index: 1;
+}
+
+/* Ensure Text/Content is above the animation */
+.btn-primary span.inner,
+.btn-primary i,
+.btn-download-nav span {
+    position: relative;
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* Floating Points Wrapper */
+.points_wrapper {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    /* Between background and text */
+}
+
+.points_wrapper .point {
+    bottom: -10px;
+    position: absolute;
+    animation: floating-points infinite ease-in-out;
+    pointer-events: none;
+    width: 3px;
+    /* Slightly larger */
+    height: 3px;
+    background-color: rgba(255, 255, 255, 0.9);
+    /* Higher opacity for Dark Mode visibility */
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+    /* Glow for visibility */
+    border-radius: 9999px;
+}
+
+@keyframes floating-points {
+    0% {
+        transform: translateY(0);
+    }
+
+    85% {
         opacity: 0;
-        transform: translateY(20px);
+    }
+
+    100% {
+        transform: translateY(-40px);
+        opacity: 0;
+    }
+
+    /* Adjusted height */
+}
+
+/* Randomized Timing for Dots */
+.points_wrapper .point:nth-child(1) {
+    left: 10%;
+    opacity: 1;
+    animation-duration: 2.35s;
+    animation-delay: 0.2s;
+}
+
+.points_wrapper .point:nth-child(2) {
+    left: 30%;
+    opacity: 0.7;
+    animation-duration: 2.5s;
+    animation-delay: 0.5s;
+}
+
+.points_wrapper .point:nth-child(3) {
+    left: 25%;
+    opacity: 0.8;
+    animation-duration: 2.2s;
+    animation-delay: 0.1s;
+}
+
+.points_wrapper .point:nth-child(4) {
+    left: 44%;
+    opacity: 0.6;
+    animation-duration: 2.05s;
+}
+
+.points_wrapper .point:nth-child(5) {
+    left: 50%;
+    opacity: 1;
+    animation-duration: 1.9s;
+}
+
+.points_wrapper .point:nth-child(6) {
+    left: 75%;
+    opacity: 0.5;
+    animation-duration: 1.5s;
+    animation-delay: 1.5s;
+}
+
+.points_wrapper .point:nth-child(7) {
+    left: 88%;
+    opacity: 0.9;
+    animation-duration: 2.2s;
+    animation-delay: 0.2s;
+}
+
+.points_wrapper .point:nth-child(8) {
+    left: 58%;
+    opacity: 0.8;
+    animation-duration: 2.25s;
+    animation-delay: 0.2s;
+}
+
+.points_wrapper .point:nth-child(9) {
+    left: 98%;
+    opacity: 0.6;
+    animation-duration: 2.6s;
+    animation-delay: 0.1s;
+}
+
+.points_wrapper .point:nth-child(10) {
+    left: 65%;
+    opacity: 1;
+    animation-duration: 2.5s;
+    animation-delay: 0.2s;
+}
+
+/* SVG/Icon Logic - Robust Framing */
+/* SVG/Icon Logic - Robust Framing */
+.btn-primary .inner,
+.btn-download-nav span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    /* Increased gap */
+    width: 100%;
+    line-height: 1;
+    position: relative;
+    z-index: 5;
+    pointer-events: none;
+    font-size: 1.15rem;
+    /* Slightly larger text */
+    font-weight: 700;
+    /* Bolder text */
+}
+
+.btn-primary i {
+    font-size: 1.4em;
+    /* Larger Windows icon */
+    margin-top: -2px;
+    position: relative;
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* SVG Icon Logic */
+.inner svg.icon {
+    width: 18px;
+    height: 18px;
+    transition: fill 0.1s linear;
+}
+
+.button:focus svg.icon {
+    fill: white;
+}
+
+.button:hover svg.icon {
+    fill: transparent;
+    animation: dasharray 1s linear forwards, filled 0.1s linear forwards 0.95s;
+}
+
+@keyframes dasharray {
+    from {
+        stroke-dasharray: 0 0 0 0;
+    }
+
+    to {
+        stroke-dasharray: 68 68 0 0;
+    }
+}
+
+@keyframes filled {
+    to {
+        fill: white;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Mobile & Tablet Portrait - Responsive Fonts & Alignment */
+    .hero {
+        text-align: center;
+        /* Ensure parent flow is centered */
+    }
+
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* Flex center for direct children */
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    /* Section Headers Mobile Adjustment */
+    .section-header h2,
+    .why-content h2,
+    .isometric-gallery h2,
+    .security-section h2,
+    .faq-section h2 {
+        font-size: 1.8rem;
+        /* Smaller, cleaner look for headers */
+        line-height: 1.3;
+    }
+
+    /* Steps & Features Subtitles */
+    .section-header .subtitle,
+    .why-content p {
+        font-size: 1rem;
+    }
+
+    /* CTA Group Centering */
+    .cta-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .btn-primary {
+        padding: 0.8rem 1.5rem;
+        width: 100%;
+        max-width: 350px;
+        /* Prevent it from being too wide on tablet */
+        justify-content: center;
+    }
+
+    .btn-primary .inner,
+    .btn-download-nav span {
+        font-size: 1rem;
+        gap: 8px;
+    }
+
+    .btn-primary i {
+        font-size: 1.2em;
+    }
+
+    .brand-tag {
+        font-size: 0.8rem;
+    }
+
+    .logo {
+        font-size: 1.3rem;
+    }
+
+    /* Adjust Gallery Scale - MAXIMIZED */
+    .isometric-gallery ul {
+        /* Scale calculated to fill width without overflow */
+        /* 688px * 0.65 = ~447px width */
+        transform: scale(0.6, 0.6);
+        margin-top: -10px;
+        margin-bottom: 0;
+        margin-left: -5%;
+        /* Slight push to center visually if needed */
+        left: 50%;
+        transform-origin: top center;
+        translate: -50% 0;
+        /* True centering */
+    }
+
+    .iso-container {
+        height: 400px;
+        /* Increased to fit larger image */
+        margin-bottom: 0;
+        overflow: visible;
+    }
+
+    /* Force Center Version Chips */
+    .version-chips {
+        justify-content: center;
+        width: 100%;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+    }
+
+    /* Gallery Chips Mobile */
+    .theme-chips {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 1.5rem;
+    }
+
+    .chip-btn {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .theme-description {
+        margin-top: -20px;
+        /* Pull text UP closer to image */
+        padding: 0 1rem;
+        font-size: 1rem;
         position: relative;
-        z-index: 100;
+        z-index: 5;
+    }
+
+    /* Metrics Strip Mobile Sizing */
+    .metric-val {
+        font-size: 2rem;
+    }
+
+    .metric-label {
+        font-size: 0.9rem;
+    }
+
+    /* Metrics One-Liner for ALL Mobile/Tablet */
+    .metrics-strip {
+        flex-wrap: nowrap;
+        /* Force single line */
+        gap: 0.5rem;
+        padding: 2rem 5%;
+        justify-content: space-between;
+    }
+
+    .metric-item {
+        flex: 1;
+        min-width: 0;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* Extra tweaks for tiny screens */
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .isometric-gallery ul {
+        /* 688px * 0.45 = 310px width (fits 320px screen) */
+        transform: scale(0.45, 0.45);
+        translate: -50% 0;
+        left: 50%;
+    }
+
+    .iso-container {
+        height: 300px;
+        /* Tighter for small phones */
+    }
+
+    .theme-description {
+        margin-top: -5px;
+    }
+
+    /* Metrics One-Liner for Mobile */
+    /* Font sizing only for small screens */
+    .metric-val {
+        font-size: 1.4rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .metric-label {
+        font-size: 0.7rem;
+        line-height: 1.2;
+        padding: 0 2px;
     }
 }

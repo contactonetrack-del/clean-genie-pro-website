@@ -49,7 +49,22 @@
             <a href="#how-it-works">How It Works</a>
             <a href="#gallery">Themes</a>
             <a href="#faq">FAQ</a>
-            <a href="CleanGeniePro_Setup.exe" class="btn-download-nav">Download</a>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <a href="CleanGeniePro_Setup.exe" class="btn-download-nav">
+                <div class="points_wrapper">
+                    <div class="point"></div>
+                    <div class="point"></div>
+                    <div class="point"></div>
+                    <div class="point"></div>
+                    <div class="point"></div>
+                    <div class="point"></div>
+                    <div class="point"></div>
+                    <div class="point"></div>
+                </div>
+                <span style="position: relative; z-index: 2;">Download</span>
+            </a>
         </div>
     </nav>
 
@@ -62,9 +77,21 @@
                 reclaim your privacy with one click.</p>
 
             <div class="cta-wrapper">
-                <a href="../CleanGeniePro_Setup.exe" class="btn-primary ripple-effect"><i
-                        class="fa-brands fa-windows"></i> Download
-                    for Windows</a>
+                <a href="../CleanGeniePro_Setup.exe" class="btn-primary ripple-effect">
+                    <div class="points_wrapper">
+                        <div class="point"></div>
+                        <div class="point"></div>
+                        <div class="point"></div>
+                        <div class="point"></div>
+                        <div class="point"></div>
+                        <div class="point"></div>
+                        <div class="point"></div>
+                        <div class="point"></div>
+                        <div class="point"></div>
+                        <div class="point"></div>
+                    </div>
+                    <span class="inner"><i class="fa-brands fa-windows"></i> Download for Windows</span>
+                </a>
 
                 <div class="version-chips">
                     <span class="chip">v1.0.0</span>
@@ -241,26 +268,48 @@
                 </li>
             </ul>
         </div>
+        <p id="theme-description" class="theme-description">Immersive deep dark mode for late-night productivity.</p>
         <p class="gallery-note">* Gallery auto-rotates. Hover to pause.</p>
     </section>
 
     <!-- NEW: Security & Privacy -->
+    <!-- NEW: Security & Privacy -->
     <section class="security-section section-pad">
         <div class="trust-container">
             <h2>Security & Privacy First</h2>
-            <p>Your data never leaves your device. We respect your privacy.</p>
-            <div class="trust-badges">
-                <div class="trust-badge">
-                    <i class="fa-solid fa-user-shield"></i>
-                    <span>No Spyware</span>
+            <p class="subtitle">Your data never leaves your device. We respect your privacy.</p>
+
+            <div class="security-grid">
+                <!-- Card 1 -->
+                <div class="security-card">
+                    <div class="sec-icon-box">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                    <h3>No Spyware</h3>
+                    <p>We do not collect personal data. Clean Genie Pro operates entirely offline, ensuring no telemetry
+                        is sent to the cloud.</p>
                 </div>
-                <div class="trust-badge">
-                    <i class="fa-solid fa-hard-drive"></i>
-                    <span>Local Processing</span>
+
+                <!-- Card 2 -->
+                <div class="security-card">
+                    <div class="sec-icon-box">
+                        <i class="fa-solid fa-hard-drive"></i>
+                    </div>
+                    <h3>Local Processing</h3>
+                    <p>All cleaning and optimization happens directly on your machine. No file uploads, no remote
+                        servers, just local power.</p>
                 </div>
-                <div class="trust-badge">
-                    <i class="fa-brands fa-windows"></i>
+
+                <!-- Card 3 -->
+                <div class="security-card">
+                    <div class="sec-icon-box">
+                        <i class="fa-brands fa-windows"></i>
+                    </div>
                     <span>Defender Compatible</span>
+                    <!-- Kept span for legacy or style tweak if needed, but likely h3 better -->
+                    <h3>Defender Certified</h3>
+                    <p>Built to work alongside Windows Defender. Signed with a trusted certificate to ensure zero false
+                        positives.</p>
                 </div>
             </div>
         </div>
@@ -505,12 +554,32 @@
 
                 const ROTATION_INTERVAL = 4000;
                 let galleryTimer;
+                const descElement = document.getElementById('theme-description');
+
+                const descriptions = [
+                    "Immersive deep dark mode for late-night productivity.",
+                    "Calm and trustworthy reliable blue for focused professional work.",
+                    "Perfect middle ground with high contrast for everyday use.",
+                    "Bright and airy, matching the native Windows 11 aesthetics."
+                ];
+
+                function updateDescription(index) {
+                    if (descElement && descriptions[index]) {
+                        // Fade out
+                        descElement.style.opacity = '0';
+                        setTimeout(() => {
+                            descElement.textContent = descriptions[index];
+                            // Fade in
+                            descElement.style.opacity = '1';
+                        }, 200);
+                    }
+                }
 
                 function rotateGallery() {
                     // Pause rotation on mobile to let users scroll manually if they want
                     if (checkMobileMode()) return;
 
-                    console.log("Rotating gallery from index " + currentBlockIndex);
+                    // console.log("Rotating gallery from index " + currentBlockIndex);
                     // 1. Hide current
                     blocks[currentBlockIndex].classList.remove('active');
 
@@ -519,22 +588,29 @@
 
                     // 3. Show next
                     blocks[currentBlockIndex].classList.add('active');
+
+                    // 4. Update Chips
+                    chips.forEach(b => b.classList.remove('active'));
+                    if (chips[currentBlockIndex]) chips[currentBlockIndex].classList.add('active');
+
+                    // 5. Update Description
+                    updateDescription(currentBlockIndex);
                 }
 
                 // Start timer
                 galleryTimer = setInterval(rotateGallery, ROTATION_INTERVAL);
-                console.log("Gallery timer started");
+
+                // Initial description set (just in case)
+                updateDescription(0);
 
                 // Pause on hover
                 const galleryList = document.querySelector('.gallery-list');
                 if (galleryList) {
                     galleryList.addEventListener('mouseenter', () => {
-                        // console.log("Gallery paused");
                         clearInterval(galleryTimer);
                     });
 
                     galleryList.addEventListener('mouseleave', () => {
-                        // console.log("Gallery resumed");
                         clearInterval(galleryTimer);
                         galleryTimer = setInterval(rotateGallery, ROTATION_INTERVAL);
                     });
@@ -555,7 +631,10 @@
                             currentBlockIndex = index; // Update internal index
                         }
 
-                        // 3. Reset Timer (give user time to look)
+                        // 3. Update Description
+                        updateDescription(index);
+
+                        // 4. Reset Timer (give user time to look)
                         clearInterval(galleryTimer);
                         galleryTimer = setInterval(rotateGallery, ROTATION_INTERVAL);
                     });
@@ -580,6 +659,36 @@
         });
 
 
+
+        // Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = themeToggleBtn.querySelector('i');
+        const html = document.documentElement;
+
+        // Check local storage or system preference
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme === 'light') {
+            html.setAttribute('data-theme', 'light');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            if (currentTheme === 'light') {
+                html.removeAttribute('data-theme'); // Go back to default (Dark)
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                html.setAttribute('data-theme', 'light');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'light');
+            }
+        });
 
         // Add Ripple Effect to Buttons
         document.querySelectorAll('.ripple-effect').forEach(btn => {
