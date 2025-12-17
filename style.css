@@ -2407,6 +2407,15 @@ footer {
         padding: 2rem 5%;
         font-size: 0.8rem;
     }
+
+    /* Final Overrides for Mobile Hero Image sizing */
+    .hero-visual {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        transform: translateX(0) !important;
+        aspect-ratio: 16/10 !important;
+    }
 }
 
 @media (max-width: 480px) {
