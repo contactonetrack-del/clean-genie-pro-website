@@ -1,4 +1,4 @@
-/* Updated: 2025-12-20 Repush 19 */
+/* Updated: 2025-12-20 Repush 20 */
 :root {
     --bg-dark: #0f111a;
     --bg-card: #1a1d2d;
@@ -2548,5 +2548,13 @@ footer {
         left: auto !important;
         right: auto !important;
         aspect-ratio: 16/10 !important;
+        overflow: visible !important;
+        /* Allow scale to overflow slightly if needed */
+    }
+
+    .app-mockup {
+        transform: scale(1.25);
+        /* 25% larger visual */
+        transform-origin: center center;
     }
 }
