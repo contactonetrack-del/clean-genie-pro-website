@@ -1,4 +1,4 @@
-/* Updated: 2025-12-20 Final Repush */
+/* Updated: 2025-12-20 Repush 16 */
 :root {
     --bg-dark: #0f111a;
     --bg-card: #1a1d2d;
@@ -2439,16 +2439,19 @@ footer {
     }
 
     .newsletter-col {
-        padding: 0 5%;
+        padding: 0 2%;
     }
 
-    .newsletter-col p,
     .newsletter-col h4 {
-        text-wrap: pretty;
-        /* Standard wrapping but prettier */
-        max-width: 100%;
-        margin-left: auto;
-        margin-right: auto;
+        margin-bottom: 0.5rem;
+    }
+
+    .newsletter-col p {
+        white-space: nowrap;
+        font-size: 0.75rem;
+        /* Smaller font to fit in one line */
+        width: 100%;
+        margin: 0 auto 1rem auto;
     }
 
     .newsletter-form {
