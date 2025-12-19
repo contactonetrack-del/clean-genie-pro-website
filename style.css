@@ -1,4 +1,4 @@
-/* Updated: 2025-12-20 Repush 2 */
+/* Updated: 2025-12-20 Repush 3 */
 :root {
     --bg-dark: #0f111a;
     --bg-card: #1a1d2d;
@@ -2457,5 +2457,16 @@ footer {
         font-size: 0.7rem;
         line-height: 1.2;
         padding: 0 2px;
+    }
+}
+
+/* Mobile Hero Image Scaling Correction */
+@media (max-width: 768px) {
+    .hero-visual {
+        width: 140% !important;
+        max-width: 140% !important;
+        margin-left: -20%;
+        /* Center after widening */
+        aspect-ratio: 16/10 !important;
     }
 }
