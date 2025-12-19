@@ -356,6 +356,26 @@
         </div>
     </section>
 
+    <!-- Download Modal -->
+    <div id="download-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeDownloadModal()"><i class="fa-solid fa-times"></i></button>
+            <div class="modal-header">
+                <h2>Download Ready</h2>
+            </div>
+            <div class="modal-body">
+                <p>Get the latest version of Clean Genie Pro for Windows.</p>
+                <a href="CleanGeniePro_Installer.exe" download class="btn-primary modal-btn">
+                    <span class="inner"><i class="fa-brands fa-windows"></i> Start Download</span>
+                </a>
+                <div class="modal-info">
+                    <span><i class="fa-solid fa-code-branch"></i> v1.0.0</span>
+                    <span><i class="fa-solid fa-file-arrow-down"></i> 3.0 MB</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer id="support">
         <div class="footer-content">
@@ -708,6 +728,31 @@
                     ripples.remove()
                 }, 1000);
             })
+        });
+
+        // Download Modal Logic
+        function openDownloadModal() {
+            const modal = document.getElementById('download-modal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+        }
+
+        function closeDownloadModal() {
+            const modal = document.getElementById('download-modal');
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('download-modal')?.addEventListener('click', (e) => {
+            const modalContent = document.querySelector('.modal-content');
+            if (e.target === document.getElementById('download-modal')) {
+                closeDownloadModal();
+            }
         });
     </script>
 </body>
