@@ -1,4 +1,4 @@
-/* Updated: 2025-12-20 Repush 11 */
+/* Updated: 2025-12-20 Repush 12 */
 :root {
     --bg-dark: #0f111a;
     --bg-card: #1a1d2d;
@@ -2379,44 +2379,68 @@ footer {
         margin-top: 1rem;
     }
 
-    /* Better Balanced Nav Links */
+    /* Footer Mobile Enhancement - Side-by-Side Columns */
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+        /* create two columns */
+        gap: 2rem 1.5rem;
+        /* Row gap 2rem, Col gap 1.5rem */
+        text-align: left;
+        /* Align text left for lists */
+        padding: 0 1.5rem;
+    }
+
+    .footer-content>.footer-col:nth-child(1) {
+        order: -1;
+        grid-column: 1 / -1;
+        /* Brand full width */
+        text-align: center;
+        /* Keep brand centered */
+    }
+
+    .footer-content>.footer-col:nth-child(4) {
+        order: 99;
+        grid-column: 1 / -1;
+        /* Newsletter full width */
+        text-align: center;
+        /* Keep newsletter centered */
+    }
+
+    /* Product & Support Columns (2 & 3) sit side-by-side naturally now */
     .footer-content>.footer-col:nth-child(2),
     .footer-content>.footer-col:nth-child(3) {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        justify-items: start;
-        text-align: left;
-        column-gap: 1rem;
-        row-gap: 1rem;
-        padding: 0 10%;
-        margin: 0 auto;
-        max-width: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        /* Clean vertical lists */
+        padding: 0;
+        margin: 0;
+        max-width: none;
     }
 
-    .footer-content>.footer-col h4 {
-        margin-bottom: 1.2rem;
-    }
-
+    /* Reset previous overrides */
     .footer-content>.footer-col:nth-child(2) h4,
     .footer-content>.footer-col:nth-child(3) h4 {
-        grid-column: span 2;
-        margin-bottom: 1.2rem;
+        grid-column: auto;
+        margin-bottom: 1rem;
+        width: 100%;
+        text-align: left;
     }
 
     .footer-content>.footer-col:nth-child(2) a,
     .footer-content>.footer-col:nth-child(3) a {
-        margin-bottom: 0;
-        width: 100%;
+        margin-bottom: 0.6rem;
+        width: auto;
         font-size: 0.9rem;
-    }
-
-    /* Handle lone items in 2-col grid */
-    .footer-content>.footer-col:nth-child(2) a:last-child:nth-child(odd) {
-        grid-column: span 2;
     }
 
     .newsletter-col {
         padding: 0 5%;
+    }
+
+    .newsletter-col p,
+    .newsletter-col h4 {
+        text-wrap: balance;
     }
 
     .newsletter-form {
