@@ -2562,11 +2562,44 @@ footer {
         align-items: center;
     }
 
+    .mockup-body {
+        width: 100%;
+        /* Fix collapse */
+        height: 100%;
+    }
+
+    .header-slider {
+        width: 100%;
+        height: 100%;
+    }
+
     .header-slider img {
         object-fit: contain;
         max-height: 100%;
-        width: auto;
+        width: 100%;
+        /* Ensure width filling */
         max-width: 100%;
+        position: absolute;
+        /* Keep absolute to stack */
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        /* Center */
+    }
+
+    /* Disable 3D animation on mobile to prevent disappearance */
+    .header-slide {
+        transform: none !important;
+        transition: opacity 0.5s ease !important;
+        animation: none !important;
+        opacity: 0;
+    }
+
+    .header-slide.active {
+        opacity: 1;
+        transform: none !important;
     }
 }
 
