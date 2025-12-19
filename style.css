@@ -2541,6 +2541,7 @@ footer {
 
 /* Mobile Hero Image Scaling Correction - Fixed */
 /* Mobile Hero Image Scaling Correction - FINAL FIX */
+/* Mobile Hero Image Scaling Correction - FINAL FIX */
 @media (max-width: 768px) {
     .hero-visual {
         width: 100vw !important;
@@ -2549,8 +2550,8 @@ footer {
         margin-right: calc(50% - 50vw);
         /* Increase height/size for mobile visibility */
         min-height: 350px !important;
-        perspective: 1000px;
-        /* Essential for 3D flip */
+        perspective: 2000px;
+        /* Enhanced depth */
         position: relative !important;
         overflow: visible !important;
         transform: scale(0.9);
@@ -2560,16 +2561,16 @@ footer {
         width: 100%;
         height: 100%;
         transform-style: preserve-3d;
-        /* Key for child 3D transforms */
     }
 
     .mockup-body {
         width: 100%;
         height: 100%;
         position: relative;
+        transform-style: preserve-3d;
+        /* CRITICAL FIX: Propagate 3D */
     }
 
-    /* Restore Flip Animation for Mobile */
     .header-slider {
         width: 100%;
         height: 100%;
@@ -2580,33 +2581,33 @@ footer {
     .header-slider img {
         object-fit: contain;
         width: 110% !important;
-        /* Slightly larger than container to fill screen */
         height: auto;
         max-height: 100%;
         position: absolute;
         left: 50%;
         top: 50%;
+        /* Combined Transform for base state */
         transform: translate(-50%, -50%);
-        /* Start centered */
         margin: 0;
+        backface-visibility: hidden;
+        /* Ensure clean flip */
     }
 
-    /* Animation Logic - Identical to Desktop but sized for mobile */
+    /* Animation Logic - Simplified and Stronger */
     .header-slide {
         opacity: 0;
-        /* Exit State */
-        transform: translate(-50%, -50%) rotateY(90deg) !important;
-        /* 3D Rotate hidden */
-        transition: all 0.8s ease-in-out !important;
-        backface-visibility: hidden;
+        /* Exit/Hidden State */
+        transform: translate(-50%, -50%) rotateY(90deg);
+        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
     }
 
     .header-slide.active {
         opacity: 1;
         z-index: 10;
-        /* Active State - Reset Rotate */
-        transform: translate(-50%, -50%) rotateY(0deg) !important;
-        animation: flipInMobile 1s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;
+        /* Active State */
+        transform: translate(-50%, -50%) rotateY(0deg);
+        /* Force animation slightly after to ensure browser catch */
+        animation: flipInMobile 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     }
 
     @keyframes flipInMobile {
@@ -2614,6 +2615,11 @@ footer {
             opacity: 0;
             transform: translate(-50%, -50%) rotateY(-90deg) scale(0.9);
             filter: blur(5px);
+        }
+
+        50% {
+            opacity: 1;
+            filter: blur(2px);
         }
 
         100% {
