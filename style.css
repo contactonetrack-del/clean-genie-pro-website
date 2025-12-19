@@ -1,4 +1,4 @@
-/* Updated: 2025-12-20 Repush 17 */
+/* Updated: 2025-12-20 Repush 18 */
 :root {
     --bg-dark: #0f111a;
     --bg-card: #1a1d2d;
@@ -2314,18 +2314,35 @@ footer {
     }
 
     /* Gallery Chips Mobile - Centered Wrap */
+    /* Gallery Chips Mobile - Single Scrollable Line */
     .theme-chips {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 6px;
+        flex-wrap: nowrap;
+        /* Force single line */
+        overflow-x: auto;
+        /* Scrollable */
+        justify-content: flex-start;
+        /* Align start allows scrolling */
+        gap: 8px;
         margin-bottom: 1.5rem;
-        padding: 0 5px;
+        padding-bottom: 5px;
+        /* Space for scrollbar */
+        padding-left: 5%;
+        padding-right: 5%;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        /* Hide scrollbar Firefox */
+    }
+
+    .theme-chips::-webkit-scrollbar {
+        display: none;
+        /* Hide scrollbar Chrome/Safari */
     }
 
     .chip-btn {
-        font-size: 0.75rem;
-        padding: 6px 10px;
+        font-size: 0.7rem;
+        padding: 6px 12px;
+        white-space: nowrap;
         flex-shrink: 0;
     }
 
