@@ -1,4 +1,4 @@
-/* Updated: 2025-12-20 Repush 16 */
+/* Updated: 2025-12-20 Repush 17 */
 :root {
     --bg-dark: #0f111a;
     --bg-card: #1a1d2d;
@@ -2330,12 +2330,18 @@ footer {
     }
 
     .theme-description {
-        margin-top: -20px;
-        /* Pull text UP closer to image */
-        padding: 0 1rem;
-        font-size: 1rem;
+        margin-top: -15px;
+        padding: 0 5px;
+        font-size: 0.85rem;
+        /* Smaller to fit one line */
+        white-space: nowrap;
+        /* Force single line */
         position: relative;
         z-index: 5;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        /* Safety if screen is VERY small */
     }
 
     /* Metrics Strip Mobile Sizing */
