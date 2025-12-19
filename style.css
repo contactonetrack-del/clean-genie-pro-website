@@ -1,4 +1,4 @@
-/* Updated: 2025-12-20 Final Repush 2 */
+/* Updated: 2025-12-20 Repush 19 */
 :root {
     --bg-dark: #0f111a;
     --bg-card: #1a1d2d;
@@ -2314,35 +2314,33 @@ footer {
     }
 
     /* Gallery Chips Mobile - Centered Wrap */
-    /* Gallery Chips Mobile - Single Scrollable Line */
+    /* Gallery Chips Mobile - 2x2 Grid */
     .theme-chips {
-        display: flex;
-        flex-wrap: nowrap;
-        /* Force single line */
-        overflow-x: auto;
-        /* Scrollable */
-        justify-content: flex-start;
-        /* Align start allows scrolling */
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        /* 2x2 Layout */
         gap: 8px;
         margin-bottom: 1.5rem;
-        padding-bottom: 5px;
-        /* Space for scrollbar */
-        padding-left: 5%;
-        padding-right: 5%;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        /* Hide scrollbar Firefox */
+        padding: 0 5%;
+        overflow: visible;
+        width: 100%;
+        max-width: 400px;
+        /* Prevent getting too wide */
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .theme-chips::-webkit-scrollbar {
         display: none;
-        /* Hide scrollbar Chrome/Safari */
     }
 
     .chip-btn {
-        font-size: 0.7rem;
-        padding: 6px 12px;
+        font-size: 0.8rem;
+        padding: 8px 5px;
+        /* slightly more padding */
         white-space: nowrap;
+        width: 100%;
+        text-align: center;
         flex-shrink: 0;
     }
 
