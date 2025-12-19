@@ -52,7 +52,7 @@
             <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
                 <i class="fa-solid fa-moon"></i>
             </button>
-            <a href="CleanGeniePro_Setup.exe" class="btn-download-nav">
+            <button onclick="openDownloadModal()" class="btn-download-nav">
                 <div class="points_wrapper">
                     <div class="point"></div>
                     <div class="point"></div>
@@ -64,7 +64,7 @@
                     <div class="point"></div>
                 </div>
                 <span style="position: relative; z-index: 2;">Download</span>
-            </a>
+            </button>
         </div>
     </nav>
 
@@ -77,7 +77,7 @@
                 reclaim your privacy with one click.</p>
 
             <div class="cta-wrapper">
-                <a href="../CleanGeniePro_Setup.exe" class="btn-primary ripple-effect">
+                <button onclick="openDownloadModal()" class="btn-primary ripple-effect">
                     <div class="points_wrapper">
                         <div class="point"></div>
                         <div class="point"></div>
@@ -91,7 +91,7 @@
                         <div class="point"></div>
                     </div>
                     <span class="inner"><i class="fa-brands fa-windows"></i> Download for Windows</span>
-                </a>
+                </button>
 
                 <div class="version-chips">
                     <span class="chip">v1.0.0</span>
@@ -377,7 +377,7 @@
                 <a href="#gallery">Themes</a>
                 <a href="#">System Requirements</a>
                 <a href="#">Changelog</a>
-                <a href="CleanGeniePro_Setup.exe">Download v1.0</a>
+
             </div>
 
             <!-- Col 3: Support -->
@@ -707,6 +707,207 @@
             })
         });
     </script>
+
+    <script>
+        // Download Modal Functions
+        function openDownloadModal() {
+            document.getElementById('downloadModal').style.display = 'flex';
+            triggerDownload();
+        }
+
+        function closeDownloadModal() {
+            document.getElementById('downloadModal').style.display = 'none';
+        }
+
+        function triggerDownload() {
+            const url = 'https://raw.githubusercontent.com/contactonetrack-del/clean-genie-pro-website/main/CleanGeniePro_Installer.exe';
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'CleanGeniePro_Installer.exe';
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Close modal when clicking outside of it
+        window.addEventListener('click', function (event) {
+            const modal = document.getElementById('downloadModal');
+            if (event.target == modal) {
+                closeDownloadModal();
+            }
+        });
+    </script>
+
+    <!-- Download Modal -->
+    <div id="downloadModal" class="download-modal">
+        <div class="download-modal-content">
+            <button class="download-modal-close" onclick="closeDownloadModal()">&times;</button>
+            <div class="download-modal-body">
+                <div class="download-icon">📥</div>
+                <h2>Downloading...</h2>
+                <div class="download-spinner"></div>
+                <p>Your <strong>Clean Genie Pro Installer</strong> is being downloaded.</p>
+                <p class="download-hint">If the download doesn't start automatically, click the button below:</p>
+                <a href="https://raw.githubusercontent.com/contactonetrack-del/clean-genie-pro-website/main/CleanGeniePro_Installer.exe"
+                    class="download-fallback-btn" download="CleanGeniePro_Installer.exe">Download Installer</a>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Download Modal Styles */
+        .download-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(4px);
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .download-modal-content {
+            background-color: white;
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .download-modal-close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #666;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .download-modal-close:hover {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .download-modal-body {
+            text-align: center;
+        }
+
+        .download-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .download-modal-body h2 {
+            margin: 0 0 20px 0;
+            font-size: 28px;
+            color: #333;
+            font-family: inherit;
+        }
+
+        .download-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .download-modal-body p {
+            color: #666;
+            margin: 15px 0;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .download-hint {
+            font-size: 12px !important;
+            color: #999 !important;
+        }
+
+        .download-fallback-btn {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: background 0.3s;
+            font-size: 14px;
+        }
+
+        .download-fallback-btn:hover {
+            background: #5568d3;
+        }
+
+        @media (max-width: 600px) {
+            .download-modal-content {
+                padding: 30px 20px;
+            }
+
+            .download-modal-body h2 {
+                font-size: 24px;
+            }
+
+            .download-icon {
+                font-size: 40px;
+            }
+        }
+    </style>
 </body>
 
 </html>

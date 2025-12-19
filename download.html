@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clean Genie Pro Installer Download</title>
+    <script>
+        // Trigger download without page navigation
+        function downloadInstaller() {
+            const url = 'https://raw.githubusercontent.com/contactonetrack-del/clean-genie-pro-website/main/CleanGeniePro_Installer.exe';
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'CleanGeniePro_Installer.exe';
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        
+        // Start download when page loads
+        window.addEventListener('load', downloadInstaller);
+    </script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .container {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+        }
+        h1 {
+            color: #333;
+            margin: 0 0 10px 0;
+            font-size: 28px;
+        }
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        p {
+            color: #666;
+            line-height: 1.6;
+            margin: 15px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: background 0.3s;
+        }
+        .button:hover {
+            background: #5568d3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📥 Downloading...</h1>
+        <div class="spinner"></div>
+        <p>Your <strong>Clean Genie Pro Installer</strong> is being downloaded.</p>
+        <p style="font-size: 14px; color: #999;">If the download doesn't start automatically, click the button below:</p>
+        <a href="https://raw.githubusercontent.com/contactonetrack-del/clean-genie-pro-website/main/CleanGeniePro_Installer.exe" class="button" download="CleanGeniePro_Installer.exe">Download Installer</a>
+    </div>
+</body>
+</html>
