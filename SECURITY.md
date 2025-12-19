@@ -16,7 +16,7 @@ If you discover a security vulnerability in Clean Genie Pro, please report it re
 
 ### How to Report
 
-**Email:** security@onetrack.in
+**Email:** contactonetrack@gmail.com
 
 Please include the following information in your report:
 
