@@ -1,4 +1,4 @@
-/* Updated: 2025-12-20 Repush 13 */
+/* Updated: 2025-12-20 Repush 15 */
 :root {
     --bg-dark: #0f111a;
     --bg-card: #1a1d2d;
@@ -2309,19 +2309,23 @@ footer {
         flex-shrink: 0;
     }
 
+    .benefit-list li span {
+        flex: 1;
+    }
+
     /* Gallery Chips Mobile - Centered Wrap */
     .theme-chips {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 10px;
+        gap: 6px;
         margin-bottom: 1.5rem;
-        padding: 0 10px;
+        padding: 0 5px;
     }
 
     .chip-btn {
-        font-size: 0.9rem;
-        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
+        padding: 6px 10px;
         flex-shrink: 0;
     }
 
