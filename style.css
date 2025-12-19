@@ -1,4 +1,4 @@
-/* Updated: 2025-12-20 Repush 3 */
+/* Updated: 2025-12-20 Repush 4 */
 :root {
     --bg-dark: #0f111a;
     --bg-card: #1a1d2d;
@@ -2220,9 +2220,11 @@ footer {
     .isometric-gallery h2,
     .security-section h2,
     .faq-section h2 {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
         /* Smaller, cleaner look for headers */
         line-height: 1.3;
+        text-wrap: balance;
+        word-wrap: break-word;
     }
 
     /* Steps & Features Subtitles */
