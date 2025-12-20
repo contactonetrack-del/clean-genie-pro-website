@@ -433,7 +433,7 @@ h1 {
     overflow: visible;
     z-index: 10;
     /* Shift layout slightly left to use gap */
-    transform: translateX(20px);
+    transform: translate(80px, 40px);
 }
 
 .glow-effect {
@@ -979,12 +979,21 @@ h1 {
     letter-spacing: 0.5px;
 }
 
-/* Version Chips */
+/* CTA Group & Version Chips */
+.cta-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+}
+
 .version-chips {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
-    margin-top: 1rem;
+    justify-content: center;
+    margin-top: 1.2rem;
+    width: 100%;
 }
 
 .chip {
@@ -1533,6 +1542,7 @@ h1 {
     align-items: center;
     overflow: visible;
     z-index: 10;
+    transform: translate(80px, 40px);
 }
 
 .glow-effect {
